@@ -1,0 +1,67 @@
+I'm working on a project that requires me to extract data from a pdf file and format these entries into an excel spreadsheet to later be fed into a database for quick and easy access, I have a brief overview of the pattern that can be observed in these entries, and is as follows.
+
+This is a brief I created earlier, here is a pattern we can use to filter out each piece of information into its relevant attribute. For a single given input let's assume that all text until ", from" correlates to the inventory ID, with any text after ", from" being the Provenience. If this text is not found by the time we find the text "Ht" let's assume the provenience is not described. "Ht" and the numbers after it should be interpreted as the height dimension, the words "diam" may also follow which indicate the diameter. To find the bibliographic reference we should assume that this is the text following the last dimension measurement (be it only Ht. or, Ht. and diam.), UNTIL we find the imagery description, which can for the time being assumed to start at the text [a], [a), (a], or (a). This is as a result of OCR issues. For the time being we won't worry about the additional notes section, this can be filtered out at a later time manually. For now we're focusing on just making this work for one sample entry, but we will eventually scale it up at a later date. We don't need to worry about the artefact type in this situation as we can assume all artefacts are the same type.
+
+This is copy-pasted from another GPT chat instance I had where I initially tried to create a regex python solution, however due to the complexity and poor quality of the PDF OCR scan, I want to use your own logical processing functionality to format these data entries as is required. With the following data points for each column being as follows:
+
+Artefact Type, Inventory ID, Provenience, Dimensions, Bibliographic References, Imagery Description
+
+Here is a list of items to start with, remember to format them into a table
+
+Calyx-kraters
+*1 Syracuse 36334, from the Fusco necropolis. Ht. 42-5. P L A T E 1 a
+PP, no. 1, pi. 1 a; PPSupp, no. 1; LCS, p. 203, no. 26; Suppl. Ill, p. 99, no. 48; IGD III. 1,
+3; Gogos, OJh 55, 1984, p. 45, fig. 13; A.J. N. W . Prag, The Oresteia, pi. 35 d.
+[a) Orestes, Electra and Pylades at the tomb of A g a m e m n o n , [b) young satyr and
+maenad.
+For a different interpretation [Iphigenia in Tauris) of the obverse, see Carlo Anti, Dioniso
+10, 1947, pp. 124-36; the problem is discussed in PPSupp, pp. 25-6; see also Kossatz-
+Diessmann, Dramen des Aischylos, pp. 94 and 96.
+T H E SICILIAN F O R E R U N N E R S 25
+2 West Berlin F 3296, from Palazzuolo. Ht. 52, diam. 51.
+PP, no. 2, pis. 2 a and 3 a; PPSupp, no. 2; LCS, p. 203, no. 27; Suppl. Ill, p. 99, no. 49; van
+der Meer, BABesch 52-3, 1977-8, fig. 40; Trendall, Festschrift Hemelrijk, p. 159, fig. 2.
+[a) Punishment of Dirce and Lykos, [b) maenad between two satyrs.
+*3 Palermo 2198 (old no. 3480), from Gela. R i m broken off; actual ht. 32-5. P L A T E 1 b,c
+LCS, p. 203, no. 28a, pi. 80,1 (reverse); Suppl. Ill, p. 99, no. 51.
+[a) Standing draped w o m a n , resting r. arm on pillar, Eros beside seated w o m a n looking
+into mirror, half-draped youth; bust of silen, above, [b) draped w o m a n with fillet in r. hand,
+young satyr bending forward with phiale in r. hand.
+*4 Vatican U 21 (inv. 17969). Ht. 42, diam. 40. P L A T E 1 d
+PP, no. 3, pi. 3 c (obverse); PPSupp, no. 3, pi. 2 a (reverse); LCS, p. 203, no. 28; Suppl. Ill,
+p. 99, no. 50.
+[a) Three maenads and a satyr, [b) two draped youths.
+*5 Vienna 986. Ht. 37-5. P L A T E 1 e,f
+PP, no. 4, pi. 3 d; PPSupp, no. 4; LCS, p. 204, no. 29; Suppl. Ill, p. 99, no. 52; LIMC III,
+p. 923, Eros 872, pi. 658, 6.
+[a) Maenad, with Eros, seated between two silens, [b) two draped women, 1. with
+thyrsus, r. with pomegranate and fillet.
+For the open box below the seated maenad to r., cf. no. 3.
+6 Madrid 11026 (L. 388). Ht. 31.
+PPSupp, no. 5, pi. 1 a and b; LCS, p. 204, no. 30; Suppl. Ill, p. 99, no. 53.
+[a) Phlyax scene—Zeus, with thunderbolt in 1. hand and stick in r., between two
+phlyakes, 1. with basket on his head, r. playing the flute, [b) two draped youths, 1. with
+thyrsus, r. with stick.
+Bell-kraters
+*7 Syracuse 36332, from the Fusco necropolis. Ht. 43-5. (i) P L A T E 2 a
+PP, no. 5, pis. 2 A and 3 b; PPSupp, no. 6; LCS, p. 204, no. 31, pi. 80, 2; Suppl. Ill, p. 99,
+no. 54; Sikanie, figs. 2 8 3 ^ ; LIMC III, p. 662, Dolan 17, pi. 528, 1.
+[a) A m b u s h of Dolon, [b) maenad seated between maenad and satyr.
+For the subject of the obverse see F. Lissarrague, Rev Arch 1980, fasc. 1, p. 12 and
+Trendall, NAC 12, 1983, p. 92.
+*8 Syracuse 36319, from the Fusco necropolis. H t 43-5. [b) P L A T E 2 b
+PP, no. 6, pi. 1 b; PPSupp, no. 7; LCS, p. 204, no. 32; Suppl. Ill, p. 99, no. 55; van der
+Meer, BABesch 52-3, 1977-8, fig. 86; Jobst, Die Hohle, fig. 18; Vernant and Vidal-Nacquet,
+Tragedy and Myth in ancient Greece, pi. 4.
+(a) Philoctetes, [b) maenad between two satyrs (the head of the maenad and the upper
+part of the satyr to r. are missing).
+*9 Agrigento 11431, from Monte Adranone, T. 1. Ht. 33. P L A T E 2 c
+Suppl. I, p. 37, no. 33 a, pi. 8, 3: Suppl. Ill, p. 99, no. 57.
+(a) Young satyr with phiale and dish, bending forward in front of seated maenad, with
+thyrsus in r. hand, [b) two draped youths, 1. with thyrsus, r. with stick.
+10 Louvre K 249. Ht. 30.
+Passeri, pi. 128; LCS, p. 204, no. 33, pi. 80, 3 ^ ; Suppl. Ill, p. 99, no. 58.
+[a) Young satyr with tambourine, bending forward in front of seated meanad with
+thyrsus, [b) maenad running to r., with thyrsus in r. hand, cista and fillet in 1.
+T h e head of the thyrsus carried by the maenad on the reverse finds a close parallel in that
+held by the youth to 1. on the reverse of Madrid 11026 (

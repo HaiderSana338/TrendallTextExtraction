@@ -1,0 +1,83 @@
+Prompt:
+
+You are tasked with parsing a text document containing an index of ancient Mediterranean pottery collections. Your goal is to extract specific information and organize it into a tabular table with the following columns: "Reference No.", "Collection Name", "Collection ID", and "Provenience". The structure and format of the document are as follows:
+
+    Institution Name: This is identified by the geographical location in all capital letters, followed by the institution's name in standard type with capitalizations for nouns (e.g., "ROME Museo Nazionale").
+
+    Entry Format: Each entry in the document lists the artifact types, followed by the inventory ID for that institution, and then a two-number sequence separated by a forward slash (e.g., "3/272"). This sequence is the Reference No. and it is crucial that the string, along with the forward slash, is preserved.
+
+    Provenience: The provenance of the collection is usually stated clearly, often as a geographical location (e.g., "ROME").
+
+    Handling Missing Data: If the Collection Name or Provenience is missing or not explicitly mentioned for some entries, use the last known Collection Name and Provenience until a new one is provided. The pottery type (e.g., Vase, Plate, Bowl, Cup) should not be used in place of any data attribute.
+
+Example of Entries:
+
+mathematica
+
+ROME Museo Nazionale
+Vase 12345 3/272
+Plate 67890 4/273
+
+ATHENS National Museum
+Bowl 54321 1/12
+Cup 98765 2/34
+
+Desired Output Format:
+
+sql
+
+| Reference No. | Collection Name  | Collection ID | Provenience |
+|---------------|------------------|---------------|-------------|
+| 3/272         | Museo Nazionale  | 12345         | ROME        |
+| 4/273         | Museo Nazionale  | 67890         | ROME        |
+| 1/12          | National Museum  | 54321         | ATHENS      |
+| 2/34          | National Museum  | 98765         | ATHENS      |
+
+Instructions for Parsing:
+
+    Identify the Institution Name and Provenience: Extract the institution name and location from the heading of each section (e.g., "ROME Museo Nazionale").
+    Extract Entries: For each entry, extract the artifact type, inventory ID, and Reference No.
+    Handle Missing Data: If an entry does not explicitly mention the Collection Name or Provenience, use the last known Collection Name and Provenience until a new one is provided.
+    Construct the Tabular Table: Organize the extracted information into an excel-ready tabular table with the specified columns using your logical processing capabilities.
+    Ensure Complete Extraction: Thoroughly check and confirm that every entry from the image is included in the final tabular table without any omissions.
+    Avoid Repetition: Implement checks to ensure that no values are repeated in the final tabular table.
+
+Example Process:
+
+Given the input text:
+
+mathematica
+
+ROME Museo Nazionale
+Vase 12345 3/272
+Plate 67890 4/273
+
+ATHENS National Museum
+Bowl 54321 1/12
+Cup 98765 2/34
+
+The output tabular table should be:
+
+sql
+
+| Reference No. | Collection Name  | Collection ID | Provenience |
+|---------------|------------------|---------------|-------------|
+| 3/272         | Museo Nazionale  | 12345         | ROME        |
+| 4/273         | Museo Nazionale  | 67890         | ROME        |
+| 1/12          | National Museum  | 54321         | ATHENS      |
+| 2/34          | National Museum  | 98765         | ATHENS      |
+
+Special Considerations:
+
+    Maintain the format of the Reference No., including the forward slash.
+    Ensure the accuracy of the Collection ID and Provenience.
+    Do not use the pottery type (e.g., Vase, Plate, Bowl, Cup) as a data attribute.
+    Only use and output data from the most recently supplied inputs. Do not include any data from previous inputs.
+    Thoroughly check to ensure all data from the image is extracted and included.
+    Implement checks to avoid repeating values in the final tabular table.
+
+Output:
+
+Print only the compiled tabular table with the extracted information in the specified format. Ensure the tabular table is formatted in a way that is easy to copy directly into an Excel spreadsheet.
+
+Remember to display results in a tabular table, not an sql or other style table

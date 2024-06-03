@@ -1,0 +1,48 @@
+I have a list of artifact descriptions from archaeological studies that need to be formatted into an Excel spreadsheet for database entry. Each artifact description includes details such as type, inventory ID, provenience, dimensions, bibliographic references, and imagery descriptions. Here are the specific formatting rules and steps to follow:
+
+Formatting Rules:
+
+    Reference No.:
+        Each artifact entry is prefixed by a number (e.g., 1/1, 1/2). This should be placed in a separate column titled "Reference No.".
+
+    Artifact Type:
+        This is generally mentioned at the beginning (e.g., "Calyx-krater", "Bell-krater"). Place this in the column titled "Artifact Type".
+
+    Additional Shape Information:
+        If any additional shape information is provided, include it in the column titled "Additional Shape Information". If not, use "N/A".
+
+    Collection Name/ID/Provenience:
+        The artifact's collection name, ID, and provenience are typically provided together (e.g., "Syracuse 36334, from the Fusco necropolis"). Include all this information in the column titled "Collection Name/ID/Provenience".
+
+    Height and Diameter:
+        Split dimensions into two columns: "Height" and "Diameter".
+        Heights and diameters are typically presented as "Ht. 42-5" or "diam. 33". Convert any hyphen mistaken by OCR as a decimal point (e.g., "42-5" should be "42.5").
+        If only one dimension is provided, label it under the appropriate column and use "Not specified" for the missing dimension.
+
+    Bibliographic References:
+        Include all citations and references listed after the dimensions and before the imagery description.
+        If any mention of "PLATES" is included in the bibliographic reference section, move this into a new column titled "Plate No." and list ONLY the plate number, not the suffixed letter attachment.
+
+    Imagery Description:
+        Ensure to capture the obverse (a) and reverse (b) sides described in the entries, which are typically indicated by markers like "[a)" or "[b)".
+        Convert these markers to a consistent format "(a)" and "(b)" for clarity and ensure each side is separately mentioned.
+
+    Additional Notes:
+        Any further information or comments that appear after the primary description or in separate notes should be included here. If not specified, use "Not specified".
+
+Example Entry Processing:
+
+Given an entry:
+
+css
+
+1/1 Calyx-krater Syracuse 36334, from the Fusco necropolis. Ht. 42-5. PLATE 1 a 
+PP, no. 1, pi. 1 a; PPSupp, no. 1; LCS, p. 203, no. 26; Suppl. Ill, p. 99, no. 48; IGD III. 1, 
+3; Gogos, OJh 55, 1984, p. 45, fig. 13; A.J. N. W. Prag, The Oresteia, pi. 35 d. 
+[a) Orestes, Electra and Pylades at the tomb of Agamemnon, [b) young satyr and maenad. For a different interpretation [Iphigenia in Tauris] of the obverse, see Carlo Anti, Dioniso 
+10, 1947, pp. 124-36; the problem is discussed in PPSupp, pp. 25-6; see also Kossatz-
+Diessmann, Dramen des Aischylos, pp. 94 and 96.
+
+your task would be to format it into the structured table format with the headers: Reference No., Artifact Type, Additional Shape Information, Collection Name/ID/Provenience, Height, Diameter, Bibliographic References, Plate No., Imagery Description, and Additional Notes.
+
+Please follow this format and apply these rules to process the list of artifact entries provided into an Excel-friendly table format.

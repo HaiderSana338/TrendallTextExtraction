@@ -1,0 +1,31 @@
+Prompt for Processing Archaeological Artifact Data into Excel Format:
+
+I have a list of artifact descriptions from archaeological studies that need to be formatted into an Excel spreadsheet for database entry. Each artifact description includes details such as type, inventory ID, provenience, dimensions, bibliographic references, and imagery descriptions. Here are the specific formatting rules and steps to follow:
+
+    Artifact Type and Inventory ID:
+        The artifact type is generally mentioned at the beginning (e.g., "Calyx-kraters", "Bell-kraters").
+        Directly following, the inventory ID may include additional details like museum or collection references (e.g., "Syracuse 36334").
+
+    Provenience:
+        This is usually indicated by phrases like "from" followed by the location (e.g., "from Gela"). If not specified, use "Not specified".
+
+    Dimensions:
+        Split dimensions into two columns: "Height" and "Diameter".
+        Heights and diameters are typically presented as "Ht. 38-5" or "diam. 33". Convert any hyphen mistaken by OCR as a decimal point (e.g., "38-5" should be "38.5").
+        If only one dimension is provided, label it under the appropriate column and use "Not specified" for the missing dimension.
+
+    Bibliographic References:
+        Include all citations and references listed after the dimensions and before the imagery description.
+
+    Imagery Description:
+        Ensure to capture the observe (a) and reverse (b) sides described in the entries, which are typically indicated by markers like "[a)" or "[b)".
+        Convert these markers to a consistent format "(a)" and "(b)" for clarity and ensure each side is separately mentioned.
+
+    Additional Notes:
+        Any further information or comments that appear after the primary description or in separate notes should be included here.
+
+Example Entry Processing:
+Given an entry "Bell-krater 11 Voronezh (ex Dorpat 109). Ht. 38-5. LCS, p. 204, no. 35; Suppl. Ill, p. 100, no. 60. [a) Kneeling Greek, with shield and spear, attacked by mounted Amazon, [b) two draped youths.",
+your task would be to format it into the structured table format with the headers: Artifact Type, Inventory ID, Provenience, Height, Diameter, Bibliographic References, Imagery Description, and Additional Notes.
+
+Please follow this format and apply these rules to process the list of artifact entries provided into an Excel-friendly table format.
